@@ -20,7 +20,7 @@ namespace LKMMVC_1.Tests.Controllers
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
-
+            
             // Assert
             Assert.IsNotNull(result);
         }

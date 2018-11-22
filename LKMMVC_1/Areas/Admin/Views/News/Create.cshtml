@@ -54,6 +54,7 @@
             @Html.LabelFor(model => model.NewsPhotoDetails, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input id="NewsPhotoDetails" name="NewsPhotoDetails" class="form-control" type="file" multiple="multiple" />
+                <div class="text-danger">@ViewBag.ResultMessage</div>
                 @Html.ValidationMessageFor(model => model.NewsPhotoDetails, "", new { @class = "text-danger" })
             </div>
         </div>

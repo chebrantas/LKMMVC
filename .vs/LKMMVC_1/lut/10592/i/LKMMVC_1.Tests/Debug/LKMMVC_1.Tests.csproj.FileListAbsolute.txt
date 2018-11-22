@@ -1,0 +1,10 @@
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC_1.Tests\bin\Debug\ApplicationInsights.config
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC_1.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC_1.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC_1.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC_1.Tests\bin\Debug\LKMMVC_1.Tests.dll.config
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC_1.Tests\bin\Debug\LKMMVC_1.Tests.dll
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\i\LKMMVC_1.Tests\Debug\LKMMVC_1.Tests.csprojAssemblyReference.cache
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\i\LKMMVC_1.Tests\Debug\LKMMVC_1.Tests.csproj.CoreCompileInputs.cache
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\i\LKMMVC_1.Tests\Debug\LKMMVC_1.Tests.csproj.CopyComplete
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\i\LKMMVC_1.Tests\Debug\LKMMVC_1.Tests.dll

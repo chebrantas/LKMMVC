@@ -1,0 +1,12 @@
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC.Tests\bin\Debug\xunit.abstractions.dll
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC.Tests\bin\Debug\ApplicationInsights.config
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC.Tests\bin\Debug\xunit.runner.visualstudio.testadapter.dll
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC.Tests\bin\Debug\xunit.runner.reporters.net452.dll
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC.Tests\bin\Debug\xunit.runner.utility.net452.dll
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC.Tests\bin\Debug\xunit.runner.json
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC.Tests\bin\Debug\LKMMVC.Tests.dll.config
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC.Tests\bin\Debug\LKMMVC.Tests.dll
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\i\LKMMVC.Tests\Debug\LKMMVC.Tests.csprojAssemblyReference.cache
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\i\LKMMVC.Tests\Debug\LKMMVC.Tests.csproj.CoreCompileInputs.cache
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\i\LKMMVC.Tests\Debug\LKMMVC.Tests.csproj.CopyComplete
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\i\LKMMVC.Tests\Debug\LKMMVC.Tests.dll

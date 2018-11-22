@@ -17,6 +17,9 @@
         <th>
             @Html.DisplayNameFor(model => model.PostDate)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsPhotoDetails)
+        </th>
         <th></th>
     </tr>
 
@@ -29,8 +32,11 @@
             @Html.DisplayFor(modelItem => item.PostDate)
         </td>
         <td>
-            @Html.ActionLink("Koreguoti", "Edit", new { id=item.NewsID }) |
-            @Html.ActionLink("Ištrinti", "Delete", new { id=item.NewsID })
+            @Html.DisplayFor(modelItem => item.NewsPhotoDetails.Count)
+        </td>
+        <td>
+            @Html.ActionLink("Koreguoti", "Edit", new { id = item.NewsID }) |
+            @Html.ActionLink("Ištrinti", "Delete", new { id = item.NewsID })
         </td>
     </tr>
 }

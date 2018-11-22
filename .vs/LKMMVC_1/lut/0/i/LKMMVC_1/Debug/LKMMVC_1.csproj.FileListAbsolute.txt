@@ -1,0 +1,7 @@
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC_1\bin\ApplicationInsights.config
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC_1\bin\LKMMVC_1.dll.config
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\b\LKMMVC_1\bin\LKMMVC_1.dll
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\i\LKMMVC_1\Debug\LKMMVC_1.csprojAssemblyReference.cache
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\i\LKMMVC_1\Debug\LKMMVC_1.csproj.CoreCompileInputs.cache
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\i\LKMMVC_1\Debug\LKMMVC_1.csproj.CopyComplete
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\.vs\LKMMVC_1\lut\0\i\LKMMVC_1\Debug\LKMMVC_1.dll

@@ -8,11 +8,11 @@ namespace LKMMVC_1.Models
 {
     public class CalculationHelper
     {
-        CommonContext db = new CommonContext();
+        //CommonContext db = new CommonContext();
 
         //pakeiciamas ivedamas pavadinimas lietuviskos raides keiciamos lotyniskomis
         //tarpas keiciamas i bruksneli ir taip sukuriamas katalogas is tokio pavadinimo
-        public string ChangeNewsTitle(string Title)
+        public static string ChangeNewsTitle(string Title)
         {
             Regex rgx1 = new Regex("[?:Ą]");
             Regex rgx2 = new Regex("[?:Č]");
@@ -21,8 +21,9 @@ namespace LKMMVC_1.Models
             Regex rgx5 = new Regex("[?:Š]");
             Regex rgx6 = new Regex("[?:ŲŪ]");
             Regex rgx7 = new Regex("[?:Ž]");
-            Regex rgx8 = new Regex("[^a-zA-Z0-9 -]");
+            Regex rgx8 = new Regex("[^a-zA-Z0-9 -.]");
 
+            Title = Title.ToUpper();
             Title = rgx1.Replace(Title, "A");
             Title = rgx2.Replace(Title, "C");
             Title = rgx3.Replace(Title, "E");

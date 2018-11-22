@@ -90,7 +90,6 @@ C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC_1\bin\Microso
 C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC_1\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC_1\bin\Microsoft.AI.Web.xml
 C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC_1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC_1\obj\Debug\LKMMVC_1.csprojAssemblyReference.cache
 C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC_1\obj\Debug\LKMMVC_1.csproj.CoreCompileInputs.cache
 C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC_1\obj\Debug\LKMMVC_1.csproj.CopyComplete
 C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC_1\obj\Debug\LKMMVC_1.dll
@@ -192,3 +191,6 @@ C:\Users\Monstras\Documents\Visual Studio 2013\Projects\LKMMVC\LKMMVC_1\obj\Debu
 C:\Users\Monstras\Documents\Visual Studio 2013\Projects\LKMMVC\LKMMVC_1\obj\Debug\LKMMVC_1.csproj.CopyComplete
 C:\Users\Monstras\Documents\Visual Studio 2013\Projects\LKMMVC\LKMMVC_1\obj\Debug\LKMMVC_1.dll
 C:\Users\Monstras\Documents\Visual Studio 2013\Projects\LKMMVC\LKMMVC_1\obj\Debug\LKMMVC_1.pdb
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC_1\obj\Debug\LKMMVC_1.csprojAssemblyReference.cache
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC_1\bin\ImageResizer.dll
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC_1\bin\ImageResizer.xml

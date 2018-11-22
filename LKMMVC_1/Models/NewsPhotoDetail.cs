@@ -13,6 +13,9 @@ namespace LKMMVC_1.Models
         public virtual News News { get; set; }
         //nuotraukos kelias serveryje kur fiziskai padeta
         public string PhotoLocation { get; set; }
+        //nuotraukos kelias serveryje kur fiziskai padeta sumazinta
+        public string PhotoLocationThumb { get; set; }
+
 
     }
 }
