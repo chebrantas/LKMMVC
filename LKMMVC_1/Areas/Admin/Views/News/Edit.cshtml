@@ -16,59 +16,105 @@
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <h4>NewsViewModel</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.NewsID)
+    <div class="form-horizontal">
+        <h4>NewsViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.NewsID)
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.PostDate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.PostDate, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PostDate, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PostDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PostDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NewsPhotos, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@if (Model.NewsPhotos.Count == 0)
+                {
+
+                    <input id="NewsPhotoDetails" name="NewsPhotos" class="form-control" type="file" multiple="multiple" />
+                    <div class="text-danger">@ViewBag.ResultMessage</div>
+                    @Html.ValidationMessageFor(model => model.NewsPhotos, "", new { @class = "text-danger" })
+                }
+                @foreach (var item in Model.NewsPhotos)
+                {
+                    <div>
+                        <input id=@item.NewsPhotoDetailID name="NewsPhotoDetails" class="form-control" type="file" multiple="multiple" />
+                        <img src=@Url.Content("~/"+@item.PhotoLocationThumb+"/"+item.FileName) />
+                    </div>
+
+                }*@
+
+
+
+
+                @if (Model.NewsPhotos.Count == 0)
+                {
+
+                    <input id="NewsPhotoDetails" name="NewsPhotos" class="form-control" type="file" multiple="multiple" />
+                    <div class="text-danger">@ViewBag.ResultMessage</div>
+                    @Html.ValidationMessageFor(model => model.NewsPhotos, "", new { @class = "text-danger" })
+                }
+                else
+                {
+                    <table class="table table-condensed">
+
+                        @foreach (var item in Model.NewsPhotos)
+                        {
+                            <tr>
+                                <td width="5%">
+                                   @Html.DisplayFor(modelItem => item.FileName)
+                                </td>
+                                <td width="30%">
+                                    <input id=@item.NewsPhotoDetailID name="NewsPhotoDetails" class="form-control" type="file" />
+                                    @*@Html.CheckBox(item.NewsPhotoDetailID.ToString(), false) Šalinti nuotrauką?*@
+                                    @Html.CheckBox("IsChecked", item.IsChecked) Šalinti nuotrauką?
+                                </td>
+                                <td>
+                                    <img src=@Url.Content("~/"+@item.PhotoLocationThumb+"/"+item.FileName) />
+                                </td>
+
+                            </tr>
+                        }
+
+                    </table>
+                }
+
+                <div class="text-danger">@ViewBag.ResultMessage</div>
+                @Html.ValidationMessageFor(model => model.NewsPhotos, "", new { @class = "text-danger" })
+
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.NewsPhotos, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-           
-                     @foreach (var item in Model.NewsPhotos)
-                     {
-                        <input id=@item.NewsPhotoDetailID  name="NewsPhotoDetails" class="form-control" type="file" multiple="multiple" />
-                        <img src="@Url.Content(~item.PhotoLocationThumb +'\\'+ item.FileName)" alt="@item.FileName" />
-                     }
-
-            <div class="text-danger">@ViewBag.ResultMessage</div>
-            @Html.ValidationMessageFor(model => model.NewsPhotos, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
 
 <div>
@@ -88,7 +134,7 @@
         });
 
         $('#PostDate').datepicker({
-            format: "yyyy-mm-dd",
+            format: "yyyy-mm-dd " + @DateTime.Now.Hour + ":" +@DateTime.Now.Minute,
             weekStart: 1,
             todayBtn: "linked",
             clearBtn: true,

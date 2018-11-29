@@ -41,3 +41,5 @@ C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC.Tests\bin\Deb
 C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC.Tests\obj\Debug\LKMMVC.Tests.csproj.CopyComplete
 C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC.Tests\bin\Debug\xunit.runner.json
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC.Tests\bin\Debug\ImageResizer.dll
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC.Tests\bin\Debug\ImageResizer.xml

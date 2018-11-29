@@ -78,3 +78,5 @@ C:\Users\Monstras\Documents\Visual Studio 2013\Projects\LKMMVC\LKMMVC_1.Tests\ob
 C:\Users\Monstras\Documents\Visual Studio 2013\Projects\LKMMVC\LKMMVC_1.Tests\obj\Debug\LKMMVC_1.Tests.csproj.CopyComplete
 C:\Users\Monstras\Documents\Visual Studio 2013\Projects\LKMMVC\LKMMVC_1.Tests\obj\Debug\LKMMVC_1.Tests.dll
 C:\Users\Monstras\Documents\Visual Studio 2013\Projects\LKMMVC\LKMMVC_1.Tests\obj\Debug\LKMMVC_1.Tests.pdb
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC_1.Tests\bin\Debug\ImageResizer.dll
+C:\Users\LKM\Documents\Visual Studio 2013\Projects\LKMMVC_1\LKMMVC_1.Tests\bin\Debug\ImageResizer.xml

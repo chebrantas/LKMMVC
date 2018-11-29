@@ -45,9 +45,9 @@ namespace LKMMVC_1.Areas.Admin.Controllers
         {
 
             FileUploadValidation uploadedFiles = new FileUploadValidation();
-
-            //tikrinama ar is vis prisegtas failas ir ar tinkamas formatas ir dydis
-            if (Request.Files[0].ContentLength > 0)
+           
+            //tikrinama ar is vis prisegtas failas ir ar tinkamas formatas ir dydis, bei ar ivesta data
+            if (Request.Files[0].ContentLength > 0 && news.PostDate!=DateTime.MinValue)
             {
                 uploadedFiles.filesize = 6000;
                 uploadedFiles.ValidateUploadedUserFile(Request.Files, SuportedTypes.Images);
@@ -60,9 +60,10 @@ namespace LKMMVC_1.Areas.Admin.Controllers
                 string uploadDirectoryYears = Path.Combine(Request.PhysicalApplicationPath, @"Photo\News\" + news.PostDate.Year.ToString());
                 string uploadDirectoryMonth = Path.Combine(uploadDirectoryYears, news.PostDate.Month.ToString());
                 string uploadDirectory = Path.Combine(uploadDirectoryMonth, CalculationHelper.ChangeNewsTitle(news.Title));
-                string uploadDirectoryForView = uploadDirectory.Substring(uploadDirectory.IndexOf("Photo"), uploadDirectory.LastIndexOf();
+                string uploadDirectoryForView = uploadDirectory.Substring(uploadDirectory.IndexOf("Photo"));
                 //sukuria Thumb kataloga sumazintoms nuotraukoms
                 string uploadDirectoryThumb = Path.Combine(uploadDirectory, "Thumb");
+                string uploadDirectoryThumbView = uploadDirectoryThumb.Substring(uploadDirectoryThumb.IndexOf("Photo"));
 
                 List<NewsPhotoDetail> photoDetails = new List<NewsPhotoDetail>();
                 for (int i = 0; i < Request.Files.Count; i++)
@@ -77,8 +78,8 @@ namespace LKMMVC_1.Areas.Admin.Controllers
                         {
                             FileName = fileName,
                             NewsID = news.NewsID,
-                            PhotoLocation = uploadDirectory,
-                            PhotoLocationThumb = uploadDirectoryThumb
+                            PhotoLocation = uploadDirectoryForView,
+                            PhotoLocationThumb = uploadDirectoryThumbView
                         };
                         photoDetails.Add(photoDetail);
 
@@ -94,8 +95,8 @@ namespace LKMMVC_1.Areas.Admin.Controllers
                         //sumazintas foto(thumbnail) sukuria pavadinima ir ikelia--------
                         ResizeSettings resizeSetting = new ResizeSettings
                         {
-                            Width = 150,
-                            Height = 100,
+                            Width = 105,
+                            Height = 70,
                             Format = "png"
                         };
 
@@ -165,18 +166,21 @@ namespace LKMMVC_1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "NewsID,Title,Content,PostDate")] News news)
+        public ActionResult Edit([Bind(Include = "NewsID,Title,Content,PostDate")] NewsViewModel newsViewModel)
         {
+           
+
+
             if (ModelState.IsValid)
             {
 
-                news.Content = HttpUtility.HtmlEncode(news.Content);
+                newsViewModel.Content = HttpUtility.HtmlEncode(newsViewModel.Content);
 
-                db.Entry(news).State = EntityState.Modified;
+                db.Entry(newsViewModel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(news);
+            return View(newsViewModel);
         }
 
         // GET: Admin/News/Delete/5
