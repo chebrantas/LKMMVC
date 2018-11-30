@@ -21,11 +21,15 @@ namespace LKMMVC_1.Models
                     {
                         NewsID=1,
                         PhotoLocation=@"Photo\2018\10\grazios foto",
+                        IsChecked=false,
+                        FileName="1.jpg",
                     },
                     new NewsPhotoDetail
                     {
                         NewsID=1,
                         PhotoLocation=@"Photo\2018\11\grazios foto1",
+                        IsChecked=true,
+                        FileName="2.jpg",
                     }
                 }
             });
@@ -38,13 +42,17 @@ namespace LKMMVC_1.Models
                 {
                     new NewsPhotoDetail
                     {
-                        NewsID=1,
+                        NewsID=2,
                         PhotoLocation=@"Photo\2018\10\grazios foto22",
+                        IsChecked=true,
+                        FileName="1.jpg",
                     },
                     new NewsPhotoDetail
                     {
-                        NewsID=1,
+                        NewsID=2,
                         PhotoLocation=@"Photo\2018\11\grazios foto22",
+                        IsChecked=false,
+                        FileName="2.jpg",
                     }
                 }
             });

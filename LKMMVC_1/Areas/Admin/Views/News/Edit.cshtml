@@ -51,21 +51,29 @@
             @Html.LabelFor(model => model.NewsPhotos, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@if (Model.NewsPhotos.Count == 0)
-                {
+        {
 
-                    <input id="NewsPhotoDetails" name="NewsPhotos" class="form-control" type="file" multiple="multiple" />
-                    <div class="text-danger">@ViewBag.ResultMessage</div>
-                    @Html.ValidationMessageFor(model => model.NewsPhotos, "", new { @class = "text-danger" })
+            <input id="NewsPhotoDetails" name="NewsPhotos" class="form-control" type="file" multiple="multiple" />
+            <div class="text-danger">@ViewBag.ResultMessage</div>
+            @Html.ValidationMessageFor(model => model.NewsPhotos, "", new { @class = "text-danger" })
+        }
+        @foreach (var item in Model.NewsPhotos)
+        {
+            <div>
+                <input id=@item.NewsPhotoDetailID name="NewsPhotoDetails" class="form-control" type="file" multiple="multiple" />
+                <img src=@Url.Content("~/"+@item.PhotoLocationThumb+"/"+item.FileName) />
+            </div>
+
+        }*@
+
+
+
+                @Html.LabelFor(model => model.NewsPhotos.FirstOrDefault().IsChecked, htmlAttributes: new { @class = "control-label col-md-2" })
+                @{ var test = Model.NewsPhotos.ToArray(); }
+                @for(int i = 0; i < test.Count(); i++)
+                {
+                     @Html.TextBoxFor(x=>test[i].IsChecked)
                 }
-                @foreach (var item in Model.NewsPhotos)
-                {
-                    <div>
-                        <input id=@item.NewsPhotoDetailID name="NewsPhotoDetails" class="form-control" type="file" multiple="multiple" />
-                        <img src=@Url.Content("~/"+@item.PhotoLocationThumb+"/"+item.FileName) />
-                    </div>
-
-                }*@
-
 
 
 
@@ -80,19 +88,21 @@
                 {
                     <table class="table table-condensed">
 
-                        @foreach (var item in Model.NewsPhotos)
+                        @foreach (var NewsPhotos in Model.NewsPhotos)
                         {
                             <tr>
                                 <td width="5%">
-                                   @Html.DisplayFor(modelItem => item.FileName)
+                                    @Html.DisplayFor(modelItem => NewsPhotos.FileName)
                                 </td>
                                 <td width="30%">
-                                    <input id=@item.NewsPhotoDetailID name="NewsPhotoDetails" class="form-control" type="file" />
+                                    <input id=@NewsPhotos.NewsPhotoDetailID name="NewsPhotoDetails" class="form-control" type="file" />
                                     @*@Html.CheckBox(item.NewsPhotoDetailID.ToString(), false) Šalinti nuotrauką?*@
-                                    @Html.CheckBox("IsChecked", item.IsChecked) Šalinti nuotrauką?
+                                    @Html.CheckBoxFor(x=> NewsPhotos.IsChecked, NewsPhotos.IsChecked) Šalinti nuotrauką?
+                                    @Html.DisplayFor(x=> NewsPhotos.IsChecked) Šalinti nuotrauką?
+
                                 </td>
                                 <td>
-                                    <img src=@Url.Content("~/"+@item.PhotoLocationThumb+"/"+item.FileName) />
+                                    <img src=@Url.Content("~/"+@NewsPhotos.PhotoLocationThumb+"/"+NewsPhotos.FileName) />
                                 </td>
 
                             </tr>
