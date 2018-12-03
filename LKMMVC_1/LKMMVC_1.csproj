@@ -566,6 +566,8 @@
     <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Test\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Test\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Test\EditorTemplates\NewsViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Test\Create.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -621,6 +623,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\News\EditorTemplates\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>

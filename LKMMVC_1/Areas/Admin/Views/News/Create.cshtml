@@ -84,7 +84,7 @@
         });
         //laikas su c# pridetas
         $('#PostDate').datepicker({
-            format: "yyyy-mm-dd " + @DateTime.Now.Hour + ":" +@DateTime.Now.Minute,
+            format: "yyyy-mm-dd "  + @DateTime.Now.Hour.ToString("00.##") + ":" +@DateTime.Now.Minute.ToString("00.##"),
             weekStart: 1,
             todayBtn: "linked",
             clearBtn: true,

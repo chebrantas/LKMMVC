@@ -1,0 +1,29 @@
+﻿@model NewsViewModel
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table table-condensed">
+
+    @{ var test = Model.NewsPhotos.ToArray(); }
+    @for (int i = 0; i < test.Count(); i++)
+    {
+        <tr>
+            <td width="5%">
+                @Html.DisplayFor(modelItem => test[i].FileName)
+                <input id="@i" name="NewsPhotos[@i].NewsPhotoDetailID" value="uuu" />
+            </td>
+            <td width="30%">
+                @*@Html.CheckBox("NewsPhotos[" + i + "].IsChecked", test[i].IsChecked) Šalinti nuotrauką?*@
+                @Html.TextBoxFor(m=>test[i].PhotoLocation)
+                @*<input id="@i" name="NewsPhotos[@i].PhotoLocation" value="rrr" />*@
+            </td>
+            <td>
+                <img src=@Url.Content("~/"+test[i].PhotoLocationThumb+"/"+test[i].FileName) />
+            </td>
+
+        </tr>
+    }
+</table>

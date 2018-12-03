@@ -45,9 +45,9 @@ namespace LKMMVC_1.Areas.Admin.Controllers
         {
 
             FileUploadValidation uploadedFiles = new FileUploadValidation();
-           
+
             //tikrinama ar is vis prisegtas failas ir ar tinkamas formatas ir dydis, bei ar ivesta data
-            if (Request.Files[0].ContentLength > 0 && news.PostDate!=DateTime.MinValue)
+            if (Request.Files[0].ContentLength > 0 && news.PostDate != DateTime.MinValue)
             {
                 uploadedFiles.filesize = 6000;
                 uploadedFiles.ValidateUploadedUserFile(Request.Files, SuportedTypes.Images);
@@ -168,7 +168,7 @@ namespace LKMMVC_1.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "NewsID,Title,Content,PostDate")] NewsViewModel newsViewModel)
         {
-           
+
 
 
             if (ModelState.IsValid)

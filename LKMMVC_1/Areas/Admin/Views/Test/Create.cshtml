@@ -1,0 +1,99 @@
+﻿@model News
+
+@{
+    ViewBag.Title = "Sukurti";
+}
+@section beginningscripts
+    {
+    @*datepiker stilius*@
+    <link href="~/Content/plugins/datepicker/css/bootstrap-datepicker3.css" rel="stylesheet" />
+    <script src="~/Content/plugins/ckeditor/ckeditor.js"></script>
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Test", FormMethod.Post, new { enctype = @"multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>News</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @*graziam date picker laukeliui pagal template*@
+        @*<div class="imput-group date">*@
+        <div class="form-group">
+            @*<div class="input-group-addon">*@
+            @*<i class="fa fa-calendar"></i>*@
+            @Html.LabelFor(model => model.PostDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PostDate, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+                @Html.ValidationMessageFor(model => model.PostDate, "", new { @class = "text-danger" })
+            </div>
+            @*</div>*@
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NewsPhotoDetails, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input id="NewsPhotoDetails" name="NewsPhotoDetails" class="form-control" type="file" multiple="multiple" />
+                <div class="text-danger">@ViewBag.ResultMessage</div>
+                @Html.ValidationMessageFor(model => model.NewsPhotoDetails, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Į pradžią", "Index")
+</div>
+
+@section scripts
+    {
+    <script src="~/Content/plugins/datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/Content/plugins/datepicker/locales/bootstrap-datepicker.lt.min.js"></script>
+    <script>
+        //RichTextEditor configuracija nustatoma kokios norime, ji yra faile ckeditor_config.js
+        CKEDITOR.replace('Content', {
+            customConfig: '/Content/plugins/ckeditor/custom_config/ckeditor_config.js',
+
+        });
+        //laikas su c# pridetas
+        $('#PostDate').datepicker({
+            format: "yyyy-mm-dd " + @DateTime.Now.Hour.ToString("00.##") + ":" +@DateTime.Now.Minute.ToString("00.##"),
+            weekStart: 1,
+            todayBtn: "linked",
+            clearBtn: true,
+            daysOfWeekHighlighted: "0,6",
+            autoclose: true,
+            todayHighlight: true,
+            language: 'lt'
+        });
+
+    </script>
+
+}

@@ -9,6 +9,8 @@ namespace LKMMVC_1.Models
     {
         public int NewsPhotoDetailID { get; set; }
         public string FileName { get; set; }
+        //prisegamas naujas failas per edit
+        public string EditedFileName { get; set; }
         public int NewsID { get; set; }
         public virtual News News { get; set; }
         //nuotraukos kelias serveryje kur fiziskai padeta
