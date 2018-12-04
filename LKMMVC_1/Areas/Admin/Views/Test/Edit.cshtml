@@ -74,6 +74,7 @@
                                     <input id="@i" name="uploadFiles" type="file" />
                                     @*<input id="@i" name="NewsPhotos[@i].FileName" type="file" />*@
                                     @Html.CheckBox("NewsPhotos[" + i + "].IsChecked") Šalinti nuotrauką?
+                                    @*@Html.CheckBox("Remove") Šalinti nuotrauką?*@
                                 </td>
                                 <td>
                                     <img src=@Url.Content("~/"+test[i].PhotoLocationThumb+"/"+test[i].FileName) />

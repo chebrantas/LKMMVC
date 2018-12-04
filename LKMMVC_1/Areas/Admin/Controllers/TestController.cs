@@ -192,37 +192,42 @@ namespace LKMMVC_1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "NewsID,Title,Content,PostDate,FileName ,NewsPhotos,NewsPhotoDetailID")] NewsViewModel newsViewModel, IEnumerable<HttpPostedFileBase> uploadFiles)
+        public ActionResult Edit([Bind(Include = "NewsID,Title,Content,PostDate,FileName ,NewsPhotos,NewsPhotoDetailID")] NewsViewModel newsViewModel, bool [] Remove, IEnumerable<HttpPostedFileBase> uploadFiles)
         {
-
-            var newsPhotos = newsViewModel.NewsPhotos.ToArray();
-            
-            ResizeSettings resizeSetting = new ResizeSettings
+            if (Utils.IsAny(uploadFiles))
             {
-                Width = 105,
-                Height = 70,
-                Format = "png"
-            };
 
-            //sukuriamas kelias kur uploadint faila
-            var uploadDirectory = Path.Combine(Request.PhysicalApplicationPath, db.NewsPhotoDetails.Find(newsPhotos.FirstOrDefault().NewsPhotoDetailID).PhotoLocation);
-            //sumazintas foto(thumbnail) sukuria pavadinima ir ikelia--------
-            var uploadDirectoryThumb = Path.Combine(uploadDirectory, "Thumb");
+                var newsPhotos = newsViewModel.NewsPhotos.ToArray();
 
-            for (int i = 0; i < uploadFiles.Count(); i++)
-            {
-                if (uploadFiles.ElementAt(i) != null)
+                ResizeSettings resizeSetting = new ResizeSettings
                 {
-                    newsPhotos[i].FileName = newsPhotos[i].EditedFileName;
-                    var path = Path.Combine(uploadDirectory, newsPhotos[i].FileName);
-                    uploadFiles.ElementAt(i).SaveAs(path);
-                    
-                    var pathThumb = Path.Combine(uploadDirectoryThumb, newsPhotos[i].FileName);
-                    ImageBuilder.Current.Build(path, pathThumb, resizeSetting);
+                    Width = 105,
+                    Height = 70,
+                    Format = "png"
+                };
+
+                //sukuriamas kelias kur uploadint faila
+                var uploadDirectory = Path.Combine(Request.PhysicalApplicationPath, db.NewsPhotoDetails.Find(newsPhotos.FirstOrDefault().NewsPhotoDetailID).PhotoLocation);
+                //sumazintas foto(thumbnail) sukuria pavadinima ir ikelia--------
+                var uploadDirectoryThumb = Path.Combine(uploadDirectory, "Thumb");
+
+                for (int i = 0; i < uploadFiles.Count(); i++)
+                {
+                    if (uploadFiles.ElementAt(i) != null)
+                    {
+                        newsPhotos[i].FileName = newsPhotos[i].EditedFileName;
+                        var path = Path.Combine(uploadDirectory, newsPhotos[i].FileName);
+                        uploadFiles.ElementAt(i).SaveAs(path);
+
+                        var pathThumb = Path.Combine(uploadDirectoryThumb, newsPhotos[i].FileName);
+                        ImageBuilder.Current.Build(path, pathThumb, resizeSetting);
+                    }
+
                 }
-
+            }else if (true)
+            {
+                //Utils.CheckBoxChecked(newsViewModel.NewsPhotos.ToArray()[0].IsChecked);
             }
-
 
 
 

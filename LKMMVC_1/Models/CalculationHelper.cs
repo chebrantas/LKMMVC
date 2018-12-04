@@ -36,4 +36,30 @@ namespace LKMMVC_1.Models
             return Title;
         }
     }
+
+
+    //patikrinimas ar Ienumerable(foto edit metu pakeistos ar ne)
+    public static class Utils
+    {
+        public static bool IsAny<T>(this IEnumerable<T> data)
+        {
+            foreach (var item in data)
+            {
+                if (item != null)
+                    return true;
+            }
+            return false;
+        }
+
+        public static bool CheckBoxChecked<T>(this IEnumerable<T> data)
+        {
+            foreach (var item in data)
+            {
+                if (item != null)
+                    return true;
+            }
+            return false;
+        }
+    }
+    
 }
