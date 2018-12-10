@@ -8,7 +8,7 @@ namespace LKMMVC_1.Models.EntityTypeConfiguration
         {
             //np=NewsPhotos trumpinys
             HasRequired(np => np.News).WithMany(n => n.NewsPhotoDetails).HasForeignKey(np => np.NewsID);
-            ToTable("NewsPhotos");
+            //ToTable("NewsPhotos");
         }
     }
 }

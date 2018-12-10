@@ -192,9 +192,11 @@ namespace LKMMVC_1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "NewsID,Title,Content,PostDate,FileName ,NewsPhotos,NewsPhotoDetailID")] NewsViewModel newsViewModel, bool [] Remove, IEnumerable<HttpPostedFileBase> uploadFiles)
+        public ActionResult Edit([Bind(Include = "NewsID,Title,Content,PostDate,FileName ,NewsPhotos,NewsPhotoDetailID")] NewsViewModel newsViewModel, bool[] Remove, IEnumerable<HttpPostedFileBase> uploadFiles)
         {
-            if (Utils.IsAny(uploadFiles))
+            int oldPhotoCount = db.NewsPhotoDetails.Where(m => m.NewsID == newsViewModel.NewsID).Count();
+            //checkinimo reikia ar yra foto is viso
+            if (Utils.IsAny(uploadFiles) && oldPhotoCount > 0)
             {
 
                 var newsPhotos = newsViewModel.NewsPhotos.ToArray();
@@ -224,9 +226,111 @@ namespace LKMMVC_1.Areas.Admin.Controllers
                     }
 
                 }
-            }else if (true)
+            }
+            else if (newsViewModel.NewsPhotos != null && Utils.CheckBoxDeletePhoto(newsViewModel.NewsPhotos))
             {
-                //Utils.CheckBoxChecked(newsViewModel.NewsPhotos.ToArray()[0].IsChecked);
+                NewsPhotoDetail newsPhotoDetailDelete;
+                foreach (var item in newsViewModel.NewsPhotos)
+                {
+                    if (item.IsChecked == true)
+                    {
+                        newsPhotoDetailDelete = db.NewsPhotoDetails.Find(item.NewsPhotoDetailID);
+                        //db.Entry(newsPhotoDetailDelete).State = EntityState.Deleted;
+                        db.NewsPhotoDetails.Remove(newsPhotoDetailDelete);
+                    }
+                }
+                //db.SaveChanges();
+
+
+
+
+                Utils.CheckBoxDeletePhoto(newsViewModel.NewsPhotos);
+            }
+            else if (oldPhotoCount == 0)
+            {
+                FileUploadValidation uploadedFiles = new FileUploadValidation();
+
+                //tikrinama ar is vis prisegtas failas ir ar tinkamas formatas ir dydis, bei ar ivesta data
+                if (Request.Files[0].ContentLength > 0 && newsViewModel.PostDate != DateTime.MinValue)
+                {
+                    uploadedFiles.filesize = 6000;
+                    uploadedFiles.ValidateUploadedUserFile(Request.Files, SuportedTypes.Images);
+                }
+                //--------------
+
+                if (ModelState.IsValid && uploadedFiles.IsValid)
+                {
+
+                    string uploadDirectoryYears = Path.Combine(Request.PhysicalApplicationPath, @"Photo\News\" + newsViewModel.PostDate.Year.ToString());
+                    string uploadDirectoryMonth = Path.Combine(uploadDirectoryYears, newsViewModel.PostDate.Month.ToString());
+
+                    string uploadDirectory = db.NewsPhotoDetails.Where(m => m.NewsID == 1).Select(n => n.PhotoLocation).FirstOrDefault();
+                    Path.Combine(uploadDirectoryMonth, CalculationHelper.ChangeNewsTitle(newsViewModel.Title));
+                    string uploadDirectoryForView = uploadDirectory.Substring(uploadDirectory.IndexOf("Photo"));
+                    //sukuria Thumb kataloga sumazintoms nuotraukoms
+                    string uploadDirectoryThumb = Path.Combine(uploadDirectory, "Thumb");
+                    string uploadDirectoryThumbView = uploadDirectoryThumb.Substring(uploadDirectoryThumb.IndexOf("Photo"));
+
+                    List<NewsPhotoDetail> photoDetails = new List<NewsPhotoDetail>();
+                    for (int i = 0; i < Request.Files.Count; i++)
+                    {
+                        var file = Request.Files[i];
+
+                        if (file != null && file.ContentLength > 0)
+                        {
+                            var fileName = i + 1 + Path.GetExtension(file.FileName);
+
+                            NewsPhotoDetail photoDetail = new NewsPhotoDetail()
+                            {
+                                FileName = fileName,
+                                NewsID = newsViewModel.NewsID,
+                                PhotoLocation = uploadDirectoryForView,
+                                PhotoLocationThumb = uploadDirectoryThumbView
+                            };
+                            photoDetails.Add(photoDetail);
+
+                            if (!Directory.Exists(uploadDirectory))
+                            {
+                                Directory.CreateDirectory(uploadDirectory);
+                            }
+
+                            //var path1 = Path.Combine(Server.MapPath("~/Photo/News/"), photoDetail.FileName);
+                            var path = Path.Combine(uploadDirectory, photoDetail.FileName);
+                            file.SaveAs(path);
+
+                            //sumazintas foto(thumbnail) sukuria pavadinima ir ikelia--------
+                            ResizeSettings resizeSetting = new ResizeSettings
+                            {
+                                Width = 105,
+                                Height = 70,
+                                Format = "png"
+                            };
+
+                            //patikrina ar egzistuoja Thumb katalogas jei ne sukuria
+                            if (!Directory.Exists(uploadDirectoryThumb))
+                            {
+                                Directory.CreateDirectory(uploadDirectoryThumb);
+                            }
+                            var pathThumb = Path.Combine(uploadDirectoryThumb, photoDetail.FileName);
+                            ImageBuilder.Current.Build(path, pathThumb, resizeSetting);
+                            //-------------------------------------------------------------------
+                        }
+                    }
+
+                    //news.NewsPhotoDetails = photoDetails;
+                    //news.Title = news.Title.ToUpper();
+                    //encodinimas keliant i DB
+                    //news.Content = HttpUtility.HtmlEncode(news.Content);
+                    // db.News.Add(news);
+                    db.SaveChanges();
+
+                    //pranesimas po sekmingo patalpinimo, TempData naudojame su RedirectToAction
+                    TempData["ResultMessage"] = uploadedFiles.Message;
+                    return RedirectToAction("Create");
+                }
+
+
+
             }
 
 

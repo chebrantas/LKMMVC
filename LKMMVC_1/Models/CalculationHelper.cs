@@ -51,11 +51,12 @@ namespace LKMMVC_1.Models
             return false;
         }
 
-        public static bool CheckBoxChecked<T>(this IEnumerable<T> data)
+        //tikrinama ar pazymetas nors vienas laukelis Istrinti nuotrauka
+        public static bool CheckBoxDeletePhoto(this IEnumerable<NewsPhotoDetail> data)
         {
             foreach (var item in data)
             {
-                if (item != null)
+                if (item.IsChecked == true)
                     return true;
             }
             return false;
