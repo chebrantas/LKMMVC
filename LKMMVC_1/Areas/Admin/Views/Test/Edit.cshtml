@@ -52,12 +52,8 @@
             <div class="col-md-10">
 
 
-                @if (Model.NewsPhotos.Count == 0)
-                {
+                @if (Model.NewsPhotos.Count != 0)
 
-                    <input id="uploadFiles" name="uploadFiles" class="form-control" type="file" multiple="multiple" />
-                }
-                else
                 {
 
                     <table class="table table-condensed">
@@ -82,10 +78,9 @@
 
                             </tr>
                         }
-
                     </table>
                 }
-
+                <input id="uploadFiles" name="uploadFiles" class="form-control" type="file" multiple="multiple" />
                 <div class="text-danger">@ViewBag.ResultMessage</div>
                 @Html.ValidationMessageFor(model => model.NewsPhotos, "", new { @class = "text-danger" })
 

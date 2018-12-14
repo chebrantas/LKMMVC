@@ -264,8 +264,7 @@ namespace LKMMVC_1.Areas.Admin.Controllers
                     string uploadDirectoryYears = Path.Combine(Request.PhysicalApplicationPath, @"Photo\News\" + newsViewModel.PostDate.Year.ToString());
                     string uploadDirectoryMonth = Path.Combine(uploadDirectoryYears, newsViewModel.PostDate.Month.ToString());
 
-                    string uploadDirectory = db.NewsPhotoDetails.Where(m => m.NewsID == 1).Select(n => n.PhotoLocation).FirstOrDefault();
-                    Path.Combine(uploadDirectoryMonth, CalculationHelper.ChangeNewsTitle(newsViewModel.Title));
+                    string uploadDirectory = Path.Combine(uploadDirectoryMonth, CalculationHelper.ChangeNewsTitle(newsViewModel.Title));
                     string uploadDirectoryForView = uploadDirectory.Substring(uploadDirectory.IndexOf("Photo"));
                     //sukuria Thumb kataloga sumazintoms nuotraukoms
                     string uploadDirectoryThumb = Path.Combine(uploadDirectory, "Thumb");
@@ -317,13 +316,23 @@ namespace LKMMVC_1.Areas.Admin.Controllers
                         }
                     }
 
-                    //news.NewsPhotoDetails = photoDetails;
-                    //news.Title = news.Title.ToUpper();
+                    News newsUpdate = db.News.Find(newsViewModel.NewsID);
                     //encodinimas keliant i DB
-                    //news.Content = HttpUtility.HtmlEncode(news.Content);
-                    // db.News.Add(news);
-                    db.SaveChanges();
+                    newsUpdate.Content = HttpUtility.HtmlEncode(newsViewModel.Content);
+                    newsUpdate.Title = newsViewModel.Title;
+                    newsUpdate.PostDate = newsViewModel.PostDate;
 
+                    foreach (var item in photoDetails)
+                    {
+                        //irasomos visos pridetos nuotraukos i DB
+                        db.NewsPhotoDetails.Add(item);
+                    }
+
+
+                    db.Entry(newsUpdate).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                   
                     //pranesimas po sekmingo patalpinimo, TempData naudojame su RedirectToAction
                     TempData["ResultMessage"] = uploadedFiles.Message;
                     return RedirectToAction("Create");
